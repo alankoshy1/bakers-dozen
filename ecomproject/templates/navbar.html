@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..."/>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ecomapp:AllProdCat' %}">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cartecom:cart_detail' %}">Your Cart</a>
+        </li>
+        <li class="nav-item dropdown {% if 'ecomapp' in request.path %} active {% endif %}">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Baker Dozen Isle
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'ecomapp:AllProdCat' %}">All Products</a></li>
+               {% for cat in links %}
+            <li><a class="dropdown-item" href="{{cat.get_url}}">{{cat.name}}</a></li>
+              {% endfor %}
+          </ul>
+        </li>
+        {% if item_count > 0 %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cartecom:cart_detail' %}"><i class="fa fa-shopping-cart"></i>({{item_count}})</a>
+        </li>
+        {% endif %}
+      </ul>
+      <div class="ms-auto">
+      <form class="d-flex" action="{% url 'searchecom:SearchRes' %}" method="get">
+        {% csrf_token %}
+      <input class="form-control mt-3 ml-3 me-2" type="search" placeholder="Search" name="q" aria-label="Search">
+      <button class="btn btn-outline-success ml-3 mt-3" type="submit"><i class="fa fa-search"></i></button>
+      </form>
+      </div>
+    </div>
+  </div>
+</nav>

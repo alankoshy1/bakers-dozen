@@ -1,0 +1,137 @@
+body{
+font-family: 'Roboto', sans-serif;
+max-width: 202.2vh;
+min-height: 999px;
+min-width: 521px;
+}
+
+/***NAVBAR ***/
+.nav-item {
+    letter-spacing: .2em;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.dropdown-item {
+    letter-spacing: .5em;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-top:15px;
+}
+
+.foooter {
+    background-color: #f8f9fa;
+    height:60px;
+}
+
+.foooter p{
+    padding-top:20px;
+    font-size:14px;
+}
+
+.roow {
+    padding-top: 15px;
+}
+
+.roow .mx-auto {
+    color:#000;
+    font-size:12px;
+}
+.imaage {
+    width:100%;
+    height:auto;
+
+}
+
+.tiitle {
+    font-size:16px;
+    text-transform:uppercase;
+    letter-spacing: .2em;
+
+}
+
+.imgpad {
+    padding:5px;
+
+}
+
+.bottommargin{
+    margin-bottom:10px;
+}
+
+.card-body h4 {
+    font-size: 14px;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+
+}
+
+/**PRODUCT***/
+
+.prodrow {
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+.prodtitle {
+    font-size:16px;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
+.prodtext {
+    padding-right:20px;
+}
+
+.prodrow mx-auto {
+    color:#000;
+    font-size:12px;
+    text-decoration:none;
+
+}
+
+.prodbutton {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding-bottom: 25px;
+}
+
+.centre{
+    padding-top:20px;
+}
+
+/**CART PAGE **/
+
+.taable {
+    min-width:400px;
+    font-size:14px;
+    text-align:center;
+}
+
+.t_head {
+    font-weight:400px;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+    background-color:#f8f8fa!important;
+}
+
+.custom_a {
+    text-decoration:none;
+    width: 200px;
+    height:150px;
+
+}
+.custom_icon {
+    text-decoration:none;
+    color:#868e96!important;
+    padding: 15px;
+}
+.custom_btn {
+    margin:5px;
+}
+
+
+

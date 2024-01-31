@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadesc %}
+
+        Welcome to Baker's Dozen! For all your baked goods needs!
+
+{% endblock %}
+{% block title %}
+Search
+{% endblock %}
+{% block content %}
+<div>
+    <p class="text-center centre">You Have Searched for: <b>{{query}}</b></p>
+</div>
+<div class="container">
+    <div class="row mx-auto justify-content-center p-2">
+        {% for i in product %}
+        <div class="bottommargin col-9 col-sm-12 col-md-4 col-lg-4">
+            <div class="card text-center" style="min-width:18rem">
+                <a href="{{i.get_url}}"><img class="card-img-top imaage" src="{{i.image.url}}" alt="{{i.name}}"></a>
+            <div class="card-body">
+            <h4>{{i.name}}</h4>
+            <p>{{i.price}}</p>
+            </div>
+            </div>
+        </div>
+
+
+    {% empty %}
+    <div class="row mx-auto">
+        <p class="text-center centre"> Zero Results Found :(</p>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

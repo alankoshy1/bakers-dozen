@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadesc %}
+    {% if category %}
+        {{ category.desc|truncatewords:169 }}
+    {% else %}
+        Welcome to Baker's Dozen! For all your baked goods needs!
+    {% endif %}
+{% endblock %}
+{% block title %}
+    {% if category %}
+        {{ category.name }} - Baker's Dozen
+    {% else %}
+        Baker's Dozen
+    {% endif %}
+{% endblock %}
+{% block content %}
+{% if category %}
+        <div>
+            <div class="row roow">
+                <div class="mx-auto">
+                <p><a href="{% url 'ecomapp:AllProdCat' %}">Our Product Collection</a></p>
+                </div>
+            </div>
+        </div>
+{% endif %}
+<div class="mx-auto">
+    {% if category %}
+    <img class="imaage" src="{{category.image.url}}" alt="{{category.name}}">
+</div>
+<br>
+<div>
+    <h1 class="text-center tiitle">{{category.name}}</h1>
+    <p class="text-center">{{category.desc}}</p>
+</div>
+{% else %}
+<div>  <img class="imaage imgpad" src="{% static 'img/bakebanner.jpg' %}" alt="Our Products"> </div>
+<br>
+<div>
+    <h1 class="text-center tiitle">The Baker's Dozen Selection</h1>
+    <p class="text-center">
+Welcome to Baker's Dozen, where we weave magic into every bake! Dive into our world of artisanal delights, crafted with love and the finest ingredients for a sweet journey you won't forget.</p>
+</div>
+{% endif %}
+<div class="container">
+    <div class="row mx-auto justify-content-center p-2">
+        {% for product in products.object_list %}
+            <div class="bottommargin col-9 col-sm-12 col-md-4 col-lg-4">
+                <div class="card text-center" style="min-width: 15rem;">
+                    <a href="{{ product.get_url }}"><img class="card-img-top image" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+                    <div class="card-body">
+                        <h4>{{ product.name }}</h4>
+                        <p>{{ product.price }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row mx-auto justify-content-center p-3">
+        <div class="col-md-12 text-center ">
+            {% if products.paginator.num_pages > 1 %}
+                <hr>
+                <div class="text-center">
+                    {% for pg in products.paginator.page_range %}
+                        <a href="?page={{ pg }}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif %}">{{ pg }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <br>
+    </div>
+</div>
+
+{% endblock %}

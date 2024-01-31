@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadesc %}
+
+        {{ product.desc|truncatewords:169 }}
+
+{% endblock %}
+{% block title %}
+    {% if category %}
+        {{ product.name }} - Baker's Dozen
+
+    {% endif %}
+{% endblock %}
+{% block content %}
+<div class="row prodrow">
+  <div class="mx-auto">
+    <p> <a href="{% url 'ecomapp:AllProdCat' %}">Home</a> | <a href="{{product.category.get_url}}">{{product.name}} </a> </p>
+  </div>
+<div class="container">
+ <br>
+ <div class="row">
+     <div class="col-md-12 col-sm-12-col-md-12 col-lg-12 text-center" style="min-width:18rem">
+        <img src="{{product.image.url}}" alt="{{product.name}}" width="530px" height="350px">
+     </div>
+ </div>
+</div>
+</div>
+<div>
+    <div class="col-md-12 col-sm-12 col-md-12 col-lg-12">
+      <h1 class="text-center prodtitle">{{product.name}}</h1>
+      <p class="text-center">₹ {{product.price}}</p>
+      <p class="text-center tiitle">Product Description</p>
+      <p class="text-center prodtext">{{product.desc}}</p>
+      {% if product.stock <= 0 %}
+      <p class="text-center prodtext"><b>Out of Stock!</b></p>
+      {% else %}
+        <div class="prodbutton">
+        <a class="btn btn-secondary" href="{% url 'cartecom:add_cart' product.id %}">Add To Cart </a>
+        </div>
+      {% endif %}
+    </div>
+</div>
+{% endblock %}
